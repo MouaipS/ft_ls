@@ -27,7 +27,7 @@ int parse_arg(char *arg, t_flags *flags){
 
 
 
-t_flags parse_flags(int ac, char **av){
+t_flags *parse_flags(int ac, char **av){
 	t_flags flags;
 	int i;
 	bool double_dash;
