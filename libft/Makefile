@@ -13,8 +13,9 @@ SRCBONUS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
            ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 SRCBONUS += $(SRCS)
 
-OBJS      = $(SRCS:.c=.o)
-OBJSBONUS = $(SRCBONUS:.c=.o)
+OBJ_DIR   = obj
+OBJS      = $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
+OBJSBONUS = $(addprefix $(OBJ_DIR)/,$(SRCBONUS:.c=.o))
 CFLAGS    = -Wall -Wextra -Werror
 
 all: $(NAME)
@@ -25,8 +26,14 @@ $(NAME): $(OBJS)
 bonus: $(OBJSBONUS)
 	ar -rcs $(NAME) $(OBJSBONUS)
 
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
 clean:
-	rm -f $(OBJS) $(OBJSBONUS)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)

@@ -2,17 +2,19 @@ NAME        = ft_ls
 NAME_BONUS  = ft_ls_bonus
 
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -I include
+CFLAGS      = -Wall -Wextra -Werror -I includes
 
 SRC_DIR     = srcs
 SRC_BONUS_DIR = srcs_bonus
 OBJ_DIR     = obj
 OBJ_BONUS_DIR = obj_bonus
 
-LIBFT_DIR   = Libft/
+LIBFT_DIR   = libft/
 LIBFT       = $(LIBFT_DIR)libft.a
 
 SRC =   main.c \
+        parse_flags.c \
+		error.c
 
 #SRC_BONUS = \
 
