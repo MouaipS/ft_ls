@@ -22,8 +22,7 @@ typedef struct s_file{
 
 }		t_file;
 
-t_flags		*parse_flags(int ac, char **av);
-char		**parse_paths(int ac, char **av, int *nb_paths);
-
+t_flags		*parse_flags(int ac, char **av, char ***paths, int *nb_paths);
+void		ft_error(char c);
 
 #endif

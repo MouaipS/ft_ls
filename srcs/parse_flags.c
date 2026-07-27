@@ -1,47 +1,32 @@
-#include "../includes/ft_ls.h"
+#include "ft_ls.h"
+#include <unistd.h>
 
+t_flags	*parse_flags(int ac, char **av, char ***paths, int *nb_paths)
+{
+	t_flags	*flags;
+	int		opt;
 
-int parse_arg(char *arg, t_flags *flags){
-	int i;
-
-	i = 1;
-	while(arg[i]){
-		if (arg[i] == 'l')
+	flags = malloc(sizeof(t_flags));
+	if (!flags)
+		return (NULL);
+	ft_memset(flags, 0, sizeof(t_flags));
+	opterr = 0;
+	while ((opt = getopt(ac, av, "laRrt")) != -1)
+	{
+		if (opt == 'l')
 			flags->l = true;
-		else if (arg[i] == 'R')
+		else if (opt == 'R')
 			flags->R = true;
-		else if (arg[i] == 'a')
+		else if (opt == 'a')
 			flags->a = true;
-		else if (arg[i] == 'r')
+		else if (opt == 'r')
 			flags->r = true;
-		else if (arg[i] == 't')
+		else if (opt == 't')
 			flags->t = true;
-		else {
-			//TODO error message with illegal option
-			return(-1);
-		}
-		i++;
+		else
+			ft_error(optopt);
 	}
-	return (0);
-}
-
-
-
-t_flags *parse_flags(int ac, char **av){
-	t_flags flags;
-	int i;
-	bool double_dash;
-
-	ft_memset(&flags, 0, sizeof(t_flags));
-	double_dash = false;
-	while(i < ac){
-		if(!double_dash && ft_strcmp(av[i], "--") == 0)
-			double_dash = true;
-		else if(!double_dash && av[i][0] == '-' && av[i][1] != "/0"){
-			if(parse_arg(av[i], &flags) == -1)
-				exit(EXIT_FAILURE);
-		}
-		i++;
-	}
+	*paths = av + optind;
+	*nb_paths = ac - optind;
 	return (flags);
 }

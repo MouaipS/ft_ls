@@ -1,15 +1,13 @@
 #include "../includes/ft_ls.h"
+#include <stdio.h>
 
 int main(int ac, char **av) {
 	t_flags	*flags;
 	char	**paths;
 	int		nb_paths;
 
-	flags = parse_flags(ac, av);
-	paths = parse_paths(ac, av, &nb_paths);
-	if(paths == NULL){
-		exit(EXIT_FAILURE);
-	} else if (nb_paths == 0) {
+	flags = parse_flags(ac, av, &paths, &nb_paths);
+	if (nb_paths == 0) {
 		printf("Pas de path\n");
 		if (flags->l == true)
 			printf("Flag l\n");
