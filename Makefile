@@ -14,9 +14,11 @@ LIBFT       = $(LIBFT_DIR)libft.a
 
 SRC =   main.c \
         parse_flags.c \
-		error.c
-
-#SRC_BONUS = \
+        error.c \
+        list_dir.c \
+        sort.c \
+        print.c \
+        stat_utils.c
 
 OBJS        = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 OBJS_BONUS  = $(addprefix $(OBJ_BONUS_DIR)/,$(SRC_BONUS:.c=.o))

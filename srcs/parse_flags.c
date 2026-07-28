@@ -1,6 +1,15 @@
 #include "ft_ls.h"
 #include <unistd.h>
 
+/**
+ * @brief parse the arguments to extract flags and separate the paths
+ * @param ac/av : classic input
+ * @param paths : array of remaining arguments (paths)
+ * @param nb_paths : number of paths
+ * @return ptr to the allocated t_flags struct
+ * @warning malloc element
+ * @warning invalid flag -> exit(2)
+ */
 t_flags	*parse_flags(int ac, char **av, char ***paths, int *nb_paths)
 {
 	t_flags	*flags;
