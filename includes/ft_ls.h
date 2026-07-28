@@ -19,14 +19,19 @@ typedef struct s_file{
 	char *name;
 	char *path;
 	struct stat data;
-
+	struct s_file *next;
 }		t_file;
 
 t_flags		*parse_flags(int ac, char **av, char ***paths, int *nb_paths);
 void		ft_error(char c);
 
-
+/*stat_utils.c*/
 t_file *build_file(const char *dir, const char *name);
 void  free_file(t_file *file);
 
+t_file **list_dir(const char *path, int *nb_files, bool show_hidden);
+/* TODO: build_file failure in list_dir leaks the already-built
+ * t_file/t_list entries (return NULL instead of freeing everything) */
+
+ 
 #endif
