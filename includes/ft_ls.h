@@ -35,5 +35,6 @@ t_file **list_dir(const char *path, int *nb_files, bool show_hidden);
 
 void	sort_files(t_file **files, int nb_files, t_flags *flags);
 
- 
+void	print_files(t_file **files, int nb_files, t_flags *flags);
+
 #endif

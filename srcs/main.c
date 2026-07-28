@@ -29,9 +29,24 @@ int	main(int ac, char **av)
 	while (i < nb_paths)
 	{
 		if (is_directory(paths[i]))
-			printf("%s: directory\n", paths[i]);
+		{
+			t_file	**files;
+			int		nb_files;
+			int		j;
+
+			files = list_dir(paths[i], &nb_files, flags->a);
+			if (files)
+			{
+				sort_files(files, nb_files, flags);
+				print_files(files, nb_files, flags);
+				j = 0;
+				while (j < nb_files)
+					free_file(files[j++]);
+				free(files);
+			}
+		}
 		else
-			printf("%s: file\n", paths[i]);
+			printf("%s\n", paths[i]);
 		i++;
 	}
 	free(flags);
