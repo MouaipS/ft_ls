@@ -32,7 +32,7 @@ $(NAME_BONUS): $(OBJS_BONUS)
 	$(CC) $(CFLAGS) $^ $(LIBFT) -o $@
 
 $(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
+	$(MAKE) -C $(LIBFT_DIR) bonus
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)

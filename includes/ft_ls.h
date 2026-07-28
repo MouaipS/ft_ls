@@ -33,5 +33,7 @@ t_file **list_dir(const char *path, int *nb_files, bool show_hidden);
 /* TODO: build_file failure in list_dir leaks the already-built
  * t_file/t_list entries (return NULL instead of freeing everything) */
 
+void	sort_files(t_file **files, int nb_files, t_flags *flags);
+
  
 #endif

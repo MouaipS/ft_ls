@@ -1,5 +1,6 @@
 #include "ft_ls.h"
 #include <dirent.h>
+#include <stdio.h>
 
 static void   noop(void *content){(void)content;}
 
