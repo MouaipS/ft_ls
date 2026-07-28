@@ -25,4 +25,8 @@ typedef struct s_file{
 t_flags		*parse_flags(int ac, char **av, char ***paths, int *nb_paths);
 void		ft_error(char c);
 
+
+t_file *build_file(const char *dir, const char *name);
+void  free_file(t_file *file);
+
 #endif
